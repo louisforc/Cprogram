@@ -1,0 +1,35 @@
+# include <stdio.h>
+
+int main()
+{
+    int i,j;
+    int a[10];
+    int temp;
+    
+    printf("输入10个数:\n");
+    for(i=0; i<10; ++i)
+    {
+        scanf("%d",a+i);
+    }
+    
+    for(i=0; i<9; ++i)            //分别选取从a[0]到a[9]与其之后的元素比较大小
+    {
+        for(j=i+1; j<10; ++j)    //把小的改放在前面
+        {
+            if (a[i]>a[j])
+            {
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+
+    printf("由小到大排序:\n");
+    for(i=0; i<10; ++i)
+    {
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+    return 0;
+}
