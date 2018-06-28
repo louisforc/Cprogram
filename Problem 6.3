@@ -1,0 +1,32 @@
+# include <stdio.h>
+# include <malloc.h> 
+
+int main()
+{
+    int n=3;
+    int len;
+    int i,j;
+    int * pArr;
+    int sum1=0,sum2=0;
+    
+    len = n*n;
+    pArr = (int *)malloc(sizeof(int)*len);
+
+    printf("输入%dx%d矩阵元素:\n",n,n);
+    for(i=0; i<len; ++i)
+    {
+        scanf("%d",&pArr[i]);
+    }
+    
+    for(j=1; j<=n; ++j)
+    {
+        sum1 += *(pArr+(n+1)*(j-1));
+        sum2 += *(pArr+(n-1)*j);
+    }
+    
+    printf("\\方向对角线的元素和=%d\n",sum1);
+    printf("\/方向对角线的元素和=%d\n",sum2);
+
+    free(pArr);    
+    return 0;
+}
