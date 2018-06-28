@@ -1,0 +1,24 @@
+# include <stdio.h>
+
+int main()
+{
+    int a,n;
+    int sn=0;
+    int term=0,i;
+    
+    printf("输入a和n的值:\n");
+    printf("a=");
+    scanf("%d",&a);
+    printf("n=");
+    scanf("%d",&n);
+    
+    for(i=1;i<=n; ++i)
+    {
+        term = 10*term + a;
+        sn += term;
+    }
+    
+    printf("当a=%d,n=%d时,sn=%d\n",a,n,sn);
+    
+    return 0;
+}
