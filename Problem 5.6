@@ -1,0 +1,29 @@
+# include <stdio.h>
+
+double factoria (int x);
+
+int main()
+{
+    int max=20;
+    int i;
+    double sn=0;    //注意这里用double型
+    
+    for (i=1; i<=max; ++i)
+    {
+        sn += factoria(i);
+    }
+    printf("sn=%22.15e\n",sn);
+    return 0;
+}
+
+double factoria (int x)
+{
+    int i;
+    double factoria=1;
+    
+    for(i=1; i<=x; ++i)
+    {
+        factoria *= i;
+    }
+    return (factoria);
+}
