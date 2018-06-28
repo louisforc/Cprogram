@@ -1,0 +1,17 @@
+# include <stdio.h>
+
+int main()
+{
+    double sum = 100.0;
+    double high = sum/2;
+    int n;
+    
+    for(n=2; n<=10; ++n)
+    {
+        sum += 2*high;
+        high /= 2;
+    }
+    printf("第10次落地时小球经过%lf米，第10次反弹的高度是%lf米\n",sum,high);
+    
+    return 0;
+}
