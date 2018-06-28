@@ -1,0 +1,38 @@
+# include <stdio.h>
+
+int main()
+{
+    int space=0;
+    int number=0;
+    int letters=0;
+    int other=0;
+    char c;
+    printf("输入一串字符:");
+    
+    
+    while((c=getchar())!='\n')
+    {
+        if((65<=c && c<=90) || (97<=c && c<=122))
+        {
+            ++letters;
+        }
+        else if(32==c)
+        {
+            ++space;
+        }
+        else if(48<=c && c<=57)
+        {
+            ++number;
+        }
+        else
+        {
+            ++other;
+        }
+    }
+    
+    printf("空格有%d个\n",space);
+    printf("数字有%d个\n",number);
+    printf("字母有%d个\n",letters);
+    printf("其他字符有%d个\n",other);
+    return 0;
+}
