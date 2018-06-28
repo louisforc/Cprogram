@@ -1,0 +1,37 @@
+# include <stdio.h>
+# include <math.h>
+
+bool IsNarcissus (int number);
+int n=3;   //这里只求3位数的水仙花数
+
+int main()
+{
+    int i;
+    for(i=pow(10,n-1); i<pow(10,n); ++i)
+    {
+        if (IsNarcissus (i))
+        {
+            printf("%d \n",i);
+        }    
+    }
+    return 0;
+}
+
+bool IsNarcissus (int number)
+{
+    int sum=0;
+    int x=number;
+    while(x!=0)
+    {
+        sum += pow((x%10),n);
+        x /= 10;
+    }
+    if (sum == number)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
