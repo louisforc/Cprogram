@@ -1,0 +1,65 @@
+# include <stdio.h>
+# define N 3
+
+int main()
+{
+    int i,j;
+    int it,jt;
+    int a[N][N]={0};
+    int n=1;
+    
+    i=0;
+    j=N/2;
+    a[i][j]=n;        //把1填入第一行中间一列的位置
+    
+    while(n<N*N)
+    {
+        ++n;
+        
+        if(0==i)    //找到行数减1，列数+1的位置，如果越界则回绕
+        {
+            it=N-1;
+        }
+        else
+        {
+            it=i-1;
+        }
+        if(N-1==j)
+        {
+            jt=0;
+        }
+        else
+        {
+            jt=j+1;
+        }
+        
+        if(0==a[it][jt])    //找到的位置如果没有填过数，就把下一个数填进去
+        {
+            i=it;
+            j=jt;            
+        }
+        else                //找到的位置如果填过数了，就把下一个数填在上一个数的下面（行数+1）
+        {
+            if(N-1==i)
+            {
+                i=0;
+            }
+            else
+            {
+                ++i;
+            }
+        }
+        a[i][j]=n;
+    }
+    
+    for (i=0; i<N; ++i)        //输出矩阵
+    {
+        for (j=0; j<N; ++j)
+        {
+            printf("%-3d  ",a[i][j]);
+        }
+        printf("\n");
+    }
+        
+    return 0;
+}
