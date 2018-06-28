@@ -1,0 +1,41 @@
+# include <stdio.h>
+# include <malloc.h>
+
+int main()
+{
+
+    int temp;
+    int* pArr;
+    int len = 1;
+    char ch;
+    int n = 0;
+
+    pArr = (int *)malloc(sizeof(int)*len);
+    printf("输入数组中的元素,按回车结束:\n");
+    scanf("%d",pArr+n);
+    
+    while(ch=getchar()!='\n')
+    {
+    ++ n;
+    ++len;
+    pArr = (int *)realloc(pArr,sizeof(int)*len);
+    scanf("%d",pArr+n);
+    }
+
+    for(n=0; n<len/2; ++n)
+    {
+        temp = *(pArr+n);
+        *(pArr+n) = *(pArr+(len-1-n));
+        *(pArr+(len-1-n)) = temp;
+    }
+    
+    printf("按逆序输出:\n");
+    for(n=0; n<len; ++n)
+    {
+        printf("%d ",*(pArr+n));
+    }
+    printf("\n");
+    
+    free(pArr);
+    return 0;
+}
