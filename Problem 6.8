@@ -1,0 +1,52 @@
+# include <stdio.h>
+# define LINE 4
+# define COLUMN 5
+
+int main()
+{
+    int i,j,k;
+    int a[LINE][COLUMN];
+    int temp;
+    int line,column;
+    
+    printf("输入%d行%d列矩阵的元素:\n",LINE,COLUMN);
+    for(i=0; i<LINE; ++i)
+    {
+        for(j=0; j<COLUMN; ++j)
+        {
+            scanf("%d",&a[i][j]);
+        }
+    }
+    
+    for(j=0; j<COLUMN; ++j)
+    {
+        temp = a[0][j];
+        for(i=0; i<LINE; ++i)
+        {
+            if(a[i][j]<=temp)
+            {
+                temp = a[i][j];
+                line = i;
+                column = j;
+            }
+        }
+        for(k=0; k<COLUMN; ++k)
+        {
+            if(temp < a[line][k])
+            {
+                break;
+            }    
+        }
+        if(k==COLUMN)
+        {
+            printf("找到鞍点a[%d][%d]=%d\n",line,column,a[line][column]);
+            break;
+        }
+    }
+    if(j==COLUMN)
+    {
+        printf("找不到鞍点\n");
+    }
+    
+    return 0;
+}
