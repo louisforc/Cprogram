@@ -1,0 +1,19 @@
+# include <stdio.h>
+# include <math.h>
+
+int main()
+{
+    double a;
+    
+    printf("请输入一个小于1000的正数\n");
+    scanf("%lf",&a);
+    
+    while(a<=0 || a>=1000)
+    {
+        printf("请重新输入输入\n");
+        scanf("%lf",&a);
+    }
+    
+    printf("平方根的整数部分是：%-5.0lf\n",sqrt(a));
+    return 0;
+}
