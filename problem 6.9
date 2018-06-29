@@ -1,0 +1,46 @@
+# include <stdio.h>
+# define N 15
+
+int main()
+{
+    int a[N]={29,27,25,23,21,19,17,15,13,11,9,7,5,3,1};
+    int number;
+    int min,max,n;
+    
+    printf("输入要查找的数: ");
+    scanf("%d",&number);
+    
+    min=0;
+    max=N;
+    
+    while(1)
+    {
+        n = (min+max)/2;
+        if(number==a[n])
+        {
+            printf("该数是数组的第%d个元素\n",n+1);
+            break;
+        }
+        else
+        {
+            if(max-min<=1)
+            {
+                printf("无此数\n");
+                break;
+            }
+            else
+            {
+                if(number<a[n])
+                {
+                    min=n;
+                }
+                else
+                {
+                    max=n;
+                }        
+            }
+        }
+    }
+    
+    return 0;
+}
