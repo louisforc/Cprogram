@@ -1,0 +1,208 @@
+7.6
+# include <stdio.h>
+# include <string.h>
+# define N 100
+void connect (char str1[],char str2[]);
+
+int main()
+{
+    char str1[N],str2[N];
+    gets(str1);
+    gets(str2);
+    connect(str1,str2);
+    return 0;
+}    
+
+void connect (char str1[],char str2[])
+{
+    int i;
+    char str[2*N];
+    int len = strlen(str1)+strlen(str2);
+    for(i=0; i<strlen(str1); ++i)
+    {
+        str[i]=str1[i];
+    }
+    for(i=strlen(str1); i<len; ++i)
+    {
+        str[i]=str2[i-strlen(str1)];
+    }
+    for(i=0; i<len; ++i)
+    {
+        printf("%c",str[i]);
+    }
+    printf("\n");
+}
+
+
+7.7
+# include <stdio.h>
+# include <string.h>
+# define N 100
+int vowel (char alphabet);
+
+int main()
+{
+    char str1[N],str2[N]={NULL};
+    int i,j=0;
+    
+    printf("输入字符串:\n");
+    gets(str1);
+    for(i=0; i<strlen(str1); ++i)
+    {
+        if(vowel(str1[i]))
+        {
+            str2[j]=str1[i];
+            ++j;
+        }
+    }
+    printf("输出元音字母字符串:\n");
+    puts(str2);
+    return 0;
+}
+
+int vowel (char alphabet)
+{
+    switch (alphabet)
+    {
+    case 'a' :
+    case 'A' :    
+    case 'e' :
+    case 'E' :    
+    case 'i' :
+    case 'I' :
+    case 'o' :
+    case 'O' :    
+    case 'u' :
+    case 'U' :            
+        return 1;
+    default :
+        return 0;
+    }
+}
+
+
+
+7.8
+# include <stdio.h>
+# include <string.h>
+# define N 100
+void insert (char str[]);
+
+int main()
+{
+    char str[N]={NULL};
+    
+    printf("输入四个数字:\n");
+    gets(str);
+    insert(str);
+    printf("输出插入空格后的数字:\n");
+    puts(str);
+    return 0;
+}
+
+void insert (char str[])                //将字符串数组中第2个元素开始以后的元素挪到下标乘2的位置，在其前面插入空格
+{
+    int i;
+    for(i=strlen(str)-1; i>0; --i)        //注意从后往前挪动
+    {
+        str[i*2]=str[i];
+        str[i*2-1]=' ';
+    }
+    return;
+}
+
+
+7.9
+# include <stdio.h>
+# include <string.h>
+# include <ctype.h>
+# define N 100
+int space=0;
+int digit=0;
+int alpha=0;
+int other=0;
+void count (char str[]);
+
+int main()
+{
+    char str[N];
+    
+    printf("输入字符串:\n");
+    gets(str);
+    count(str);
+    printf("空格%d个\n数字%d个\n字母%d个\n其他字符%d个\n",space,digit,alpha,other);
+    return 0;
+}
+
+void count (char str[])
+{
+    int i;
+    for(i=0; i<(strlen(str)); ++i)
+    {
+        if(isalpha(str[i]))
+        {
+            ++alpha;
+        }
+        else if(isdigit(str[i]))
+        {
+            ++digit;
+        }                
+        else if(isspace(str[i]))
+        {
+            ++space;
+        }
+        else
+        {
+            ++other;
+        }
+    }
+    return;
+}
+
+
+
+7.10
+# include <stdio.h>
+# include <string.h>
+# include <ctype.h>
+# define N 100
+void longest (char str[]);
+
+int main()
+{
+    char str[N];
+    printf("输入一行字符:\n");
+    gets(str);
+    longest(str);
+    return 0;
+}
+
+void longest (char str[])
+{
+    int n=0;
+    int len=0;
+    int i,j;
+    for(i=0; i<strlen(str); ++i)
+    {
+        if(isalpha(str[i]))
+        {
+            ++n;
+            if(n>len)
+            {
+                len=n;
+                j=i;
+            }
+        }
+        else
+        {
+            n=0;    
+        }    
+    }
+    printf("最长单词是:");
+    for(i=j-len+1; i<=j; ++i)
+    {
+        printf("%c",str[i]);
+    }
+    printf("\n");
+    return;
+}
