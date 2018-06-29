@@ -1,0 +1,21 @@
+# include <stdio.h>
+# define N 5
+
+int main()
+{
+    int i,j,k;
+
+    for(j=0; j<N; ++j)
+    {
+        for(k=0; k<2*j; ++k)
+        {
+            printf(" ");
+        }
+        for(i=0; i<N; ++i)
+        {
+            printf("* ");
+        }
+        printf("\n");            
+    }    
+    return 0;
+}
