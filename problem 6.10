@@ -1,0 +1,52 @@
+# include <stdio.h>
+# include <ctype.h>
+# define LINE 3
+# define COLUMN 80
+
+int main()
+{
+    int i,j;
+    char a[LINE][COLUMN];
+    int space=0;
+    int digit=0;
+    int alpha=0;
+    int other=0;
+    
+    for(i=0; i<LINE; ++i)
+    {    
+        printf("输入第%d行的内容:\n",i+1);
+        for(j=0; j<COLUMN; ++j)
+        {            
+            if ((a[i][j]=getchar()) !='\n')
+            {
+                if(isalpha(a[i][j]))
+                {
+                    ++alpha;
+                }
+                else if(isdigit(a[i][j]))
+                {
+                    ++digit;
+                }                
+                else if(isspace(a[i][j]))
+                {
+                    ++space;
+                }
+                else
+                {
+                    ++other;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+    }    
+    printf("%d行文字共包含有:\n",LINE);
+    printf("\t\t空格%d个\n",space);
+    printf("\t\t数字%d个\n",digit);
+    printf("\t\t字母%d个\n",alpha);
+    printf("\t\t其他字符%d个\n",other);
+    
+    return 0;
+}
